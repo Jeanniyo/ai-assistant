@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ChatInterface from './components/ChatInterface'
 import UserProfile from './components/UserProfile'
 import AgendaDiary from './components/AgendaDiary'
+import FileManager from './components/FileManager'
 import './index.css'
 
 function App() {
@@ -28,12 +29,17 @@ function App() {
             <button onClick={() => setActiveTab('agenda')} className={`w-full text-left p-3 rounded-lg transition-all ${activeTab === 'agenda' ? 'bg-white/10 text-white font-medium' : 'hover:bg-white/5 text-white/70'}`}>
               Agenda & Diary
             </button>
+            <button onClick={() => setActiveTab('files')} className={`w-full text-left p-3 rounded-lg transition-all ${activeTab === 'files' ? 'bg-white/10 text-white font-medium' : 'hover:bg-white/5 text-white/70'}`}>
+              File Manager
+            </button>
           </nav>
         </div>
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col relative bg-black/20">
-          {activeTab === 'chat' ? <ChatInterface /> : <AgendaDiary />}
+          {activeTab === 'chat' && <ChatInterface />}
+          {activeTab === 'agenda' && <AgendaDiary />}
+          {activeTab === 'files' && <FileManager />}
         </div>
       </div>
     </div>
